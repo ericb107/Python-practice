@@ -1,0 +1,88 @@
+employees = {
+    "ERIC": "12345",
+    "JANE": "67890",
+    "ALICE": "54321",
+    "BOB": "101010"
+}
+policies = {
+    "100001": {
+        "client": "John Smith",
+        "product": "IUL",
+        "status": "Inforce",
+        "premium": "$150/month"
+    },
+    "100002": {
+        "client": "Mary Jones",
+        "product": "Term Life",
+        "status": "Pending",
+        "premium": "$75/month"
+    },
+    "100003": {
+        "client": "Robert White",
+        "product": "Whole Life",
+        "status": "Lapsed",
+        "premium": "$120/month"
+    }
+}
+
+name = input("Enter Employee Name: ").upper()
+
+if name in employees:
+    employee_id = input("Enter Employee ID: ")
+
+    if employee_id == employees[name]:
+
+        print(f"\nWelcome {name.title()}!")
+        print("\n==== Policy Services Menu ====")
+        print("1. Lookup Policy")
+        print("2. View Case Status")
+        print("3. Count Active Policies")
+
+        choice = input("\nSelect an option: ")
+
+        if choice == "1":
+            policy_num = input("Enter Policy Number: ")
+
+            if policy_num in policies:
+                print("\nPolicy Information")
+                print("------------------")
+                print(f"Client: {policies[policy_num]['client']}")
+                print(f"Product: {policies[policy_num]['product']}")
+                print(f"Status: {policies[policy_num]['status']}")
+                print(f"Premium: {policies[policy_num]['premium']}")
+            else:
+                print("Policy not found.")
+
+        elif choice == "2":
+            policy_num = input("Enter Policy Number: ")
+
+            if policy_num in policies:
+                print(
+                    f"Current Status: {policies[policy_num]['status']}"
+                )
+            else:
+                print("Policy not found.")
+
+        elif choice == "3":
+            active_count = 0
+
+            for policy in policies.values():
+                if policy["status"] == "Inforce":
+                    active_count += 1
+
+            print(f"Active Policies: {active_count}")
+
+        else:
+            print("Invalid selection.")
+
+    else:
+        print("Access Denied. Invalid Employee ID.")
+else:
+    print("Unauthorized User.")
+
+billing_policies = ["100001", "100002"]
+policy_report = ["100001", "100002", "100003"]
+
+for policy in policy_report:
+    if policy not in billing_policies:
+        print(f"Missing from billing report: {policy}")
