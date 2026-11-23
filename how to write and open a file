@@ -1,0 +1,14 @@
+#how to write a file in python.
+#you can use the 'w' mode to write to a file. If the file does not exist, it will be created. 
+# If it does exist, it will be overwritten.
+with open('writting_file.txt', 'a') as file:
+    file.write('Hello, this is a new file this is line 1')
+    file.write('\n this is line 2')
+
+
+#how to open a file in python
+with open('read_me.txt', 'r') as file:
+   # print(file.read())
+    content=file.read()
+    print('the content is')
+    print (content)
