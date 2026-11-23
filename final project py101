@@ -1,0 +1,55 @@
+# this is the final project for the python 101 course. 
+# make a rock paper scissors game that can be played agianst the computer.
+# use random, while, Input, print formatting, comperison operators, and break / continue
+
+while True:
+    import random
+
+    # Define the choices
+    choices = ['rock', 'paper', 'scissors',]
+
+    # Get the user's choice
+    print()
+    user_choice = input ('Enter your choice (rock, paper, scissors) or "quit" to exit: ').lower()
+
+    # Check if the user wants to quit
+    if user_choice == 'quit':
+        print('that was a fun game, thanks for playing!')
+    
+        break
+    # Validate user input
+    if user_choice not in choices:
+        print('Invalid choice, please try again.')
+        
+        continue
+
+    # Get the computer's choice
+    computer_choice = random.choice(choices)
+    print()
+    (print(f'You chose {user_choice}, and the computer chose {computer_choice}.'))
+    print()
+
+    # Determine the winner
+    if user_choice == computer_choice:
+        print(f"Both players selected {user_choice}. It's a tie!")
+        print()
+    elif user_choice == 'rock':
+        if computer_choice == 'scissors':
+            print('Rock beats scissors! You win! HaHa! You are better than the computer!')
+            print()
+        else:
+            print('Paper beats rock! You lose! The computer is better than you!')
+            print()
+    elif user_choice == 'scissors':
+        if computer_choice == 'paper':
+            print('Scissors beats paper! You win! HaHa! You are better than the computer!')
+            print()
+        else:
+            print('Rock beats scissors! You lose! The computer is better than you!')
+    elif user_choice == 'paper':
+        if computer_choice == 'rock':
+            print('Paper beats rock! You win! HaHa! You are better than the computer!')
+            print()
+        else:
+            print('Scissors beats paper! You lose! The computer is better than you!')
+            print()
