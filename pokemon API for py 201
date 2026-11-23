@@ -1,0 +1,33 @@
+# 1. Ask for user input -> ditto  use ivysaur or clefairy
+# 2. Create a dynamic URL based on step 1
+# 3. Fetch the data from the url in step 2
+# 4. Convert JSON to a dictionary
+# 5. Print out pokemon data
+
+import requests
+#Ask for user input
+name = input ('which pokemon did you find?: ')
+
+#2. Create a dynamic URL based on step 1
+url = f'https://pokeapi.co/api/v2/pokemon/{name}'
+
+# 3.Fetch the data from the url in step 2
+req = requests.get(url)
+
+#4. Convert JSON to a dictionary
+pokemon = req.json()
+
+#5. Print out pokemon data
+print(f'name is\t\t{pokemon['name'].capitalize()}')
+print()
+print(f'height is\t{pokemon['height']}')
+print()
+
+
+abilities = ', '.join(ability['ability']['name'] for ability in pokemon['abilities'])
+
+print(f'abbilities: {abilities}')
+print()
+print('sprites are:')
+for sprites in pokemon['sprites']:
+    print(f' - {sprites}')
