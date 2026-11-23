@@ -1,0 +1,27 @@
+from datetime import datetime, timedelta 
+import pytz
+def order_pizza(name, address, **toppings):
+    print(order_pizza)
+    print(f"order is for {name}")
+    print(f'deliver it to (address): {address}')
+
+    price = 20.00
+    for key, value in toppings.items():
+        price = price + 2.50    
+
+    local_timezone = pytz.timezone('america/new_york')
+    current_time = datetime.now(local_timezone)
+    delivery_time = current_time + timedelta(minutes=20)
+    formatted_delivery_time = delivery_time.strftime('%I:%M %p')
+    
+    print(f'The total price will be ${price}')
+    print(f'your pizza will be delivered at {formatted_delivery_time}')
+    return price
+
+name = input('Enter your name: ')
+address = input('where will will we deliver you pizza? ') 
+toppings_input = input('Enter your toppings (comma separated): ')
+topping_list = toppings_input.split(',')
+toppings = {topping.strip(): True for topping in topping_list if topping.strip()}
+
+total_price = order_pizza(name, address, **toppings)
